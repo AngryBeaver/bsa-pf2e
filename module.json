@@ -24,14 +24,6 @@
     "download": "https://github.com/AngryBeaver/bsa-dnd5e/releases/latest/download/bsa-dnd5e.zip",
     "relationships": {
       "systems": [
-        {
-          "id": "pf2e",
-          "type": "system",
-          "compatibility": {
-            "minimum": "4.6.5",
-            "verified": "4.6.5"
-          }
-        }
       ]
     },
     "compatibility": {
