@@ -1,11 +1,11 @@
-export class Pf2e implements SystemApi {
+export class Swade implements SystemApi {
 
     get version() {
         return 1;
     }
 
     get id() {
-        return "pf2e";
+        return "swade";
     }
 
     async actorRollSkill(actor, skillId){
@@ -13,7 +13,7 @@ export class Pf2e implements SystemApi {
     }
 
     async actorRollAbility(actor, abilityId){
-        throw Error("I don't know how to do this, plz fix bsa-pf2e")
+        throw Error("I don't know how to do this, plz fix bsa-swade")
     }
 
     actorSheetAddTab(sheet, html, actor, tabData:{ id: string, label: string, html: string }, tabBody:string):void {
@@ -27,7 +27,7 @@ export class Pf2e implements SystemApi {
     }
 
     get configSkills():SkillConfig[] {
-        return Object.entries(CONFIG["PF2E"].skillList).map(skills => {
+        return Object.entries(CONFIG["SWADE"].skillList).map(skills => {
             return {
                 id: skills[0],
                 label: game["i18n"].localize(skills[1])
@@ -36,7 +36,7 @@ export class Pf2e implements SystemApi {
     }
 
     get configAbilities():AbilityConfig[] {
-        return Object.entries(CONFIG["PF2E"].abilities).map(ab => {
+        return Object.entries(CONFIG["SWADE"].abilities).map(ab => {
             return {
                 id: ab[0],
                 label: game["i18n"].localize(ab[1])
@@ -49,26 +49,26 @@ export class Pf2e implements SystemApi {
             {
                 id: "pp",
                 factor: 1000,
-                label: game["i18n"].localize("PF2E.CurrencyPP"),
-                uuid: "Compendium.pf2e.equipment-srd.JuNPeK5Qm1w6wpb4",
+                label: game["i18n"].localize("SWADE.CurrencyPP"),
+                uuid: "Compendium.swade.equipment-srd.JuNPeK5Qm1w6wpb4",
             },
             {
                 id: "gp",
                 factor: 100,
-                label: game["i18n"].localize("PF2E.CurrencyGP"),
-                uuid: "Compendium.pf2e.equipment-srd.B6B7tBWJSqOBz5zz",
+                label: game["i18n"].localize("SWADE.CurrencyGP"),
+                uuid: "Compendium.swade.equipment-srd.B6B7tBWJSqOBz5zz",
             },
             {
                 id: "sp",
                 factor: 10,
-                label: game["i18n"].localize("PF2E.CurrencySP"),
-                uuid: "Compendium.pf2e.equipment-srd.5Ew82vBF9YfaiY9f",
+                label: game["i18n"].localize("SWADE.CurrencySP"),
+                uuid: "Compendium.swade.equipment-srd.5Ew82vBF9YfaiY9f",
             },
             {
                 id: "cp",
                 factor: 1,
-                label: game["i18n"].localize("PF2E.CurrencyCP"),
-                uuid: "Compendium.pf2e.equipment-srd.lzJ8AVhRcbFul5fh",
+                label: game["i18n"].localize("SWADE.CurrencyCP"),
+                uuid: "Compendium.swade.equipment-srd.lzJ8AVhRcbFul5fh",
             }
         ]
     }
