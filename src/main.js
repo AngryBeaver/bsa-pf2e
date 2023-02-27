@@ -4,7 +4,7 @@ Hooks.on("beavers-system-interface.init", async function () {
 
 Hooks.once("beavers-system-interface.ready", async function () {
 
-}
+});
 
 import {Swade} from "./Swade.js";
 
