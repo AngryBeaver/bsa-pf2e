@@ -1,8 +1,8 @@
 {
-	"name": "bsa-pf2e",
-	"title": "Beaver's System Adaption pf2e",
+	"name": "bsa-swade",
+	"title": "Beaver's System Adaption swade",
 	"version": "1.0.0",
-	"description": "Beaver's System Adaption pf2e",
+	"description": "Beaver's System Adaption swade",
 	"devDir": "C:\\Users\\Riess\\AppData\\Local\\FoundryVTT\\Data\\modules",
 	"main": "src/main.js",
 	"files": [
