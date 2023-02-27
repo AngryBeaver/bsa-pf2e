@@ -1,12 +1,12 @@
 {
-    "title": "Beaver's System Adaption pf2e",
-    "description": "pf2e implementation for Beaver's System Interface",
-    "id": "bsa-pf2e",
+    "title": "Beaver/Solace System Adaption swade",
+    "description": "swade implementation for Beaver's System Interface",
+    "id": "bsa-swade",
     "version": "1.0.0",
     "authors": [
       {
         "name": "angryBeaver",
-        "url": "https://github.com/angrybeaver"
+        "url": "https://github.com/Knight-Solace/"
       }
     ],
     "languages": [
@@ -19,9 +19,9 @@
     ],
     "packs": [
     ],
-    "url": "https://github.com/AngryBeaver/bsa-pf2e",
-    "manifest": "https://github.com/AngryBeaver/bsa-pf2e/releases/latest/download/module.json",
-    "download": "https://github.com/AngryBeaver/bsa-pf2e/releases/latest/download/bsa-pf2e.zip",
+    "url": "https://github.com/Knight-Solace/bsa-swade/",
+    "manifest": "https://github.com/Knight-Solace/bsa-swade/releases/latest/download/module.json",
+    "download": "https://github.com/Knight-Solace/bsa-swade/releases/latest/download/bsa-swade.zip",
     "relationships": {
       "systems": [
       ]
