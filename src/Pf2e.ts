@@ -5,7 +5,7 @@ export class Pf2e implements SystemApi {
     }
 
     get id() {
-        return "pf2e";
+        return "pf1e";
     }
 
     async actorRollSkill(actor, skillId){
