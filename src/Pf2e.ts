@@ -13,7 +13,8 @@ export class Pf2e implements SystemApi {
     }
 
     async actorRollAbility(actor, abilityId){
-        throw Error("I don't know how to do this, plz fix bsa-pf2e")
+        throw Error("I don't know how to do this, plz fix bsa-pf2e");
+        return null;
     }
 
     actorSheetAddTab(sheet, html, actor, tabData:{ id: string, label: string, html: string }, tabBody:string):void {
@@ -24,6 +25,13 @@ export class Pf2e implements SystemApi {
         const tabContent = $('<div class="tab" data-group="primary" data-tab="' + tabData.id + '"></div>');
         body.append(tabContent);
         tabContent.append(tabBody);
+    }
+
+    itemSheetReplaceContent(app, html, element):void {
+        html.find('.sheet-navigation').remove();
+        const sheetBody = html.find('.sheet-content');
+        sheetBody.empty();
+        sheetBody.append(element);
     }
 
     get configSkills():SkillConfig[] {
