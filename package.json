@@ -1,7 +1,7 @@
 {
 	"name": "bsa-pf2e",
 	"title": "Beaver's System Adaption pf2e",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Beaver's System Adaption pf2e",
 	"devDir": "C:\\Users\\Riess\\AppData\\Local\\FoundryVTT\\Data\\modules",
 	"main": "src/main.js",
@@ -27,7 +27,7 @@
 		"printWidth": 120
 	},
 	"devDependencies": {
-		"beavers-system-interface": "^2.1.1",
+		"beavers-system-interface": "^2.1.5",
 		"@ethaks/fvtt-quench": "^0.6.0",
 		"@league-of-foundry-developers/foundry-vtt-types": "^0.8.8-9",
 		"@types/jest": "^27.4.1",
