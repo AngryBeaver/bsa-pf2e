@@ -2,7 +2,7 @@
   "title": "Beaver's System Adaption pf2e",
   "description": "pf2e implementation for Beaver's System Interface",
   "id": "bsa-pf2e",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "authors": [
     {
       "name": "angryBeaver",

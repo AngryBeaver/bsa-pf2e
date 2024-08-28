@@ -29,16 +29,26 @@ export class Pf2e implements SystemApi {
 
     itemSheetReplaceContent(app, html, element):void {
         html.find('.sheet-navigation').remove();
+        html.find('.sheet-tabs').remove();
         const sheetBody = html.find('.sheet-content');
         sheetBody.empty();
         sheetBody.append(element);
     }
 
     get configSkills():SkillConfig[] {
-        return Object.entries(CONFIG["PF2E"].skillList).map(skills => {
+        if(CONFIG["PF2E"].skillList) {
+            return Object.entries(CONFIG["PF2E"].skillList).map(skills => {
+                return {
+                    id: skills[0],
+                    label: game["i18n"].localize(skills[1])
+                };
+            })
+        }
+        return Object.entries(CONFIG["PF2E"].skills).map((entry)=>{
             return {
-                id: skills[0],
-                label: game["i18n"].localize(skills[1])
+                id: entry[0],
+                // @ts-ignore
+                label: game["i18n"].localize(entry[1].label)
             };
         })
     }
