@@ -27,6 +27,10 @@ export class Pf2e implements SystemApi {
         tabContent.append(tabBody);
     }
 
+    get actorSheetTabSelector():string{
+        return 'nav[data-group="primary"] [data-tab]';
+    }
+
     itemSheetReplaceContent(app, html, element):void {
         html.find('.sheet-navigation').remove();
         html.find('.sheet-tabs').remove();
@@ -67,25 +71,25 @@ export class Pf2e implements SystemApi {
             {
                 id: "pp",
                 factor: 1000,
-                label: game["i18n"].localize("PF2E.CurrencyPP"),
+                label: game["i18n"].localize("PF2E.Currency.pp"),
                 uuid: "Compendium.pf2e.equipment-srd.JuNPeK5Qm1w6wpb4",
             },
             {
                 id: "gp",
                 factor: 100,
-                label: game["i18n"].localize("PF2E.CurrencyGP"),
+                label: game["i18n"].localize("PF2E.Currency.gp"),
                 uuid: "Compendium.pf2e.equipment-srd.B6B7tBWJSqOBz5zz",
             },
             {
                 id: "sp",
                 factor: 10,
-                label: game["i18n"].localize("PF2E.CurrencySP"),
+                label: game["i18n"].localize("PF2E.Currency.sp"),
                 uuid: "Compendium.pf2e.equipment-srd.5Ew82vBF9YfaiY9f",
             },
             {
                 id: "cp",
                 factor: 1,
-                label: game["i18n"].localize("PF2E.CurrencyCP"),
+                label: game["i18n"].localize("PF2E.Currency.cp"),
                 uuid: "Compendium.pf2e.equipment-srd.lzJ8AVhRcbFul5fh",
             }
         ]
