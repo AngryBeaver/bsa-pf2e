@@ -1,3 +1,5 @@
+# 1.2.2
+- implement currency
 # 1.2.1
 - fix tab
 - fix money text
