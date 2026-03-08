@@ -17,6 +17,38 @@ export class Pf2e implements SystemApi {
         return null;
     }
 
+    actorCurrenciesGet(actor):Currencies {
+        const currencies = {cp:0,sp:0,gp:0,pp:0};
+        actor.items
+          .filter(item => item.type === "treasure" && item.system.category === "coin")
+          .forEach(item => {
+              currencies.cp +=item.price.value.cp*item.quantity;
+              currencies.sp +=item.price.value.sp*item.quantity;
+              currencies.gp +=item.price.value.gp*item.quantity;
+              currencies.pp +=item.price.value.pp*item.quantity;
+          })
+        return currencies;
+    }
+
+    async actorCurrenciesStore(actor, currencies: Currencies): Promise<void> {
+        const currencyItems = await getCurrencyItems();
+        const componentList: Component[] = [];
+        Object.entries(currencyItems).forEach(async ([currencyId, currencyItem])=> {
+            if (currencyItem) {
+                const currencyComponent = beaversSystemInterface.componentFromEntity(currencyItems[currencyId]);
+                const list = beaversSystemInterface.itemListComponentFind(actor.items,currencyComponent);
+                let foundQuantity = 0;
+                list.components.forEach(c=>{foundQuantity+=c.quantity});
+                currencyComponent.quantity = currencies[currencyId]-foundQuantity;
+                componentList.push(currencyComponent);
+            } else {
+                console.error("Currency not found plz report this so bsa-pf2e can be adapted again", currencyId);
+            }
+        })
+        await beaversSystemInterface.actorComponentListAdd(actor,componentList)
+
+    }
+
     actorSheetAddTab(sheet, html, actor, tabData:{ id: string, label: string, html: string }, tabBody:string):void {
         const tabs = $(html).find('nav[data-group="primary"]');
         const tabItem = $('<a class="item" data-tab="' + tabData.id + '" title="' + tabData.label + '">'+tabData.html+'</a>');
@@ -110,4 +142,38 @@ export class Pf2e implements SystemApi {
         return "system.quantity";
     }
 
+}
+let currencyItems:Record<"cp"|"sp"|"gp"|"pp",any> = {
+   cp:undefined,
+   sp:undefined,
+   gp:undefined,
+   pp:undefined
+}
+export const getCurrencyItems = async () => {
+
+    // @ts-ignore
+    if(currencyItems?.cp) return currencyItems;
+
+
+    try {
+        // @ts-ignore
+        const t = game.packs.get("pf2e.equipment-srd").search({
+            filters: [{
+                field: "type",
+                value: "treasure"
+            }] // @ts-ignore
+        }).map(i => foundry.utils.fromUuid(i.uuid))
+        const treasures = await Promise.all(t)
+        const currencies = treasures.filter(i => i.system.category === "coin");
+        currencyItems = {
+            cp: currencies.find(i => i.name.includes(game["i18n"].localize("PF2E.Currency.cp"))),
+            sp: currencies.find(i => i.name.includes(game["i18n"].localize("PF2E.Currency.sp"))),
+            gp: currencies.find(i => i.name.includes(game["i18n"].localize("PF2E.Currency.gp"))),
+            pp: currencies.find(i => i.name.includes(game["i18n"].localize("PF2E.Currency.pp"))),
+        }
+    }catch(e){
+        // @ts-ignore
+        (game as Game)?.ui?.notifications.error("Failed to load currency items");
+    }
+    return currencyItems;
 }
